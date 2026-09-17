@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tex Holloway — Independent Financial Commentary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF7;
+    --bg-raised:#F2F1EA;
+    --ink:#13161B;
+    --muted:#5D6068;
+    --line:#E4E2D9;
+    --accent:#0E6B4F;
+    --accent-ink:#FAFAF7;
+    --focus:#0E6B4F;
+    --sans-display:"Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --sans-body:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1210;
+      --bg-raised:#171B18;
+      --ink:#F3F2EC;
+      --muted:#9C9F97;
+      --line:#2A2F2A;
+      --accent:#4FD8A6;
+      --accent-ink:#0E1210;
+      --focus:#4FD8A6;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1210;
+    --bg-raised:#171B18;
+    --ink:#F3F2EC;
+    --muted:#9C9F97;
+    --line:#2A2F2A;
+    --accent:#4FD8A6;
+    --accent-ink:#0E1210;
+    --focus:#4FD8A6;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans-body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--ink); }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--focus);
+    outline-offset:3px;
+  }
+  img{ max-width:100%; }
+
+  .wrap{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* Header */
+  header.top{
+    padding:28px 0;
+  }
+  .top-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .wordmark{
+    font-family:var(--sans-display);
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .wordmark .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    display:inline-block;
+  }
+  nav.navbar{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .navlink{
+    font-family:var(--sans-body);
+    font-size:14px;
+    font-weight:500;
+    text-decoration:none;
+    color:var(--muted);
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:4px 0;
+  }
+  .navlink[aria-current="page"]{ color:var(--ink); }
+  .navlink:hover{ color:var(--ink); }
+
+  main{ padding:8px 0 90px; }
+  section.view{ display:none; }
+  section.view.active{ display:block; }
+
+  /* Hero */
+  .hero{
+    padding:56px 0 48px;
+  }
+  .hero h1{
+    font-family:var(--sans-display);
+    font-weight:700;
+    font-size:clamp(34px, 5.6vw, 54px);
+    line-height:1.08;
+    letter-spacing:-0.02em;
+    max-width:620px;
+    margin:0 0 22px;
+  }
+  .hero p.sub{
+    font-size:17px;
+    color:var(--muted);
+    max-width:480px;
+    margin:0;
+  }
+
+  .rule{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:0;
+  }
+
+  section.block{
+    padding:56px 0;
+    border-top:1px solid var(--line);
+  }
+  h2.section-head{
+    font-family:var(--sans-display);
+    font-weight:600;
+    font-size:24px;
+    letter-spacing:-0.01em;
+    margin:0 0 8px;
+  }
+  .section-sub{
+    color:var(--muted);
+    font-size:15px;
+    margin:0 0 32px;
+    max-width:460px;
+  }
+
+  .coverage-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px 40px;
+  }
+  @media (max-width:640px){
+    .coverage-grid{ grid-template-columns:1fr; }
+  }
+  .coverage-item .sq{
+    width:8px;
+    height:8px;
+    background:var(--accent);
+    margin-bottom:14px;
+  }
+  .coverage-item h3{
+    font-family:var(--sans-display);
+    font-weight:600;
+    font-size:16px;
+    margin:0 0 8px;
+    letter-spacing:-0.005em;
+  }
+  .coverage-item p{
+    margin:0;
+    font-size:14.5px;
+    color:var(--muted);
+  }
+
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  @media (max-width:640px){
+    .two-col{ grid-template-columns:1fr; gap:32px; }
+  }
+  .two-col p{ font-size:15px; }
+  .two-col h2{
+    font-family:var(--sans-display);
+    font-weight:600;
+    font-size:19px;
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+
+  .callout{
+    background:var(--bg-raised);
+    border-left:2px solid var(--accent);
+    padding:24px 28px;
+    font-size:15px;
+  }
+  .callout p{ margin:0; }
+  .callout strong{ color:var(--ink); }
+
+  address{
+    font-style:normal;
+    font-size:15px;
+  }
+  address a{
+    color:var(--accent);
+    text-decoration:none;
+  }
+  address a:hover{ text-decoration:underline; }
+  address .role{
+    color:var(--muted);
+    display:inline-block;
+    min-width:170px;
+  }
+  address .row{ margin-bottom:10px; }
+
+  /* Legal pages */
+  .legal{ padding-top:40px; }
+  .legal-head h2{
+    font-family:var(--sans-display);
+    font-weight:700;
+    font-size:32px;
+    letter-spacing:-0.02em;
+    margin:0 0 8px;
+  }
+  .legal-updated{
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:44px;
+  }
+  .legal article{
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .legal article:last-child{ border-bottom:1px solid var(--line); }
+  .legal h3{
+    font-family:var(--sans-display);
+    font-weight:600;
+    font-size:15.5px;
+    color:var(--ink);
+    margin:0 0 10px;
+  }
+  .legal p, .legal li{
+    font-size:14.5px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+  .legal ul{ padding-left:18px; margin:8px 0 0; }
+  .legal li{ margin-bottom:6px; }
+  .legal strong{ color:var(--ink); }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px 0 48px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+    margin-bottom:20px;
+  }
+  .footer-links{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    color:var(--muted);
+    text-decoration:none;
+  }
+  .footer-links a:hover{ color:var(--ink); }
+  .footer-disc{
+    line-height:1.7;
+    max-width:760px;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .hero h1, .hero p.sub{
+      animation:rise .5s ease-out both;
+    }
+    .hero p.sub{ animation-delay:.08s; }
+  }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(8px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <a href="#home" class="wordmark" data-view="home"><span class="dot"></span>Tex Holloway</a>
+      <nav class="navbar" aria-label="Site">
+        <a href="#home" class="navlink" data-view="home" aria-current="page">Home</a>
+        <a href="#privacy" class="navlink" data-view="privacy">Privacy Policy</a>
+        <a href="#terms" class="navlink" data-view="terms">Terms &amp; Conditions</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="view active">
+
+    <div class="wrap hero">
+      <h1>Plain-spoken commentary on markets, money, and the ideas moving them.</h1>
+      <p class="sub">Tex Holloway publishes financial commentary and consumer-finance writing aimed at helping readers form their own view — before they act on it.</p>
+    </div>
+
+    <div class="wrap">
+      <hr class="rule">
+    </div>
+
+    <section class="block">
+      <div class="wrap">
+        <h2 class="section-head">What we cover</h2>
+        <p class="section-sub">A running beat, not a single topic.</p>
+        <div class="coverage-grid">
+          <div class="coverage-item">
+            <div class="sq"></div>
+            <h3>Markets &amp; macro</h3>
+            <p>Notes on what's driving stocks, rates, and the broader economy — without the noise.</p>
+          </div>
+          <div class="coverage-item">
+            <div class="sq"></div>
+            <h3>Personal finance</h3>
+            <p>Practical writing on saving, budgeting, credit, and the decisions that compound over time.</p>
+          </div>
+          <div class="coverage-item">
+            <div class="sq"></div>
+            <h3>Retirement &amp; long-term planning</h3>
+            <p>Coverage for readers thinking in decades, not headlines — income planning and account basics.</p>
+          </div>
+          <div class="coverage-item">
+            <div class="sq"></div>
+            <h3>Emerging trends</h3>
+            <p>Sector shifts and new financial products, explained early and revisited as they develop.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap two-col">
+        <div>
+          <h2>How the site works</h2>
+          <p>Tex Holloway publishes original articles on this site and also produces sponsored features and promotional content that may appear on partner websites. Any article that promotes a specific product, service, or offer is <strong>advertising</strong>, whether or not it reads like a news article, and is compensated by the advertiser named on that page.</p>
+        </div>
+        <div>
+          <h2>Editorial independence</h2>
+          <p>Compensation from an advertiser never guarantees a particular opinion or outcome in our independent articles. Where a piece is sponsored, it's labeled as sponsored, advertorial, or promotional content near the top of the page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="callout">
+          <p><strong>Not financial advice.</strong> Nothing published by Tex Holloway — on this site or on any partner page — is personalized investment, legal, or tax advice. We are not a registered investment adviser or broker-dealer. Content is for general informational purposes only; weigh it against your own circumstances or a licensed professional's guidance before making a financial decision.</p>
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- PRIVACY -->
+  <section id="privacy" class="view legal">
+    <div class="wrap">
+      <div class="legal-head">
+        <h2>Privacy Policy</h2>
+      </div>
+      <p class="legal-updated">Last updated: <span class="updated-date"></span></p>
+
+      <article>
+        <h3>1. Overview</h3>
+        <p>This policy explains what information Tex Holloway ("Tex Holloway," "we," "us") collects when you visit texholloway.com or any page we publish on a partner site that links to this policy, how we use that information, and the choices available to you. By using our sites, you agree to the practices described here.</p>
+      </article>
+
+      <article>
+        <h3>2. Information we collect</h3>
+        <ul>
+          <li><strong>Information you provide.</strong> If you contact us, sign up for a list, or fill out a form, we collect what you submit — typically your name and email address.</li>
+          <li><strong>Automatically collected information.</strong> Like most publishers, we and our vendors collect device and usage data through cookies, pixels, and similar technologies — including IP address, browser type, pages viewed, referring pages, and approximate location.</li>
+          <li><strong>Information from advertising partners.</strong> Pages that host sponsored or advertorial content may use tracking technology supplied by the advertiser or their ad network to measure clicks and conversions.</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>3. How we use information</h3>
+        <ul>
+          <li>To operate, maintain, and improve our sites and content</li>
+          <li>To understand which articles and offers readers engage with</li>
+          <li>To communicate with you if you've asked to hear from us</li>
+          <li>To measure the performance of advertising and sponsored content</li>
+          <li>To detect, prevent, and address fraud, abuse, or security issues</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>4. Cookies, pixels &amp; advertising</h3>
+        <p>We and third-party advertising partners use cookies and similar technologies to serve content, measure performance, and, on advertorial pages, track referrals to advertiser offers. You can control or delete cookies through your browser settings; blocking cookies may affect how pages on our site display or function. Where required by law, we will ask for your consent before setting non-essential cookies.</p>
+      </article>
+
+      <article>
+        <h3>5. Advertorial &amp; sponsored pages</h3>
+        <p>Some pages linking to this policy are sponsored features written or commissioned by Tex Holloway and hosted on behalf of an advertiser. Clicking through to an advertiser's offer takes you to a page operated by that advertiser, governed by their own privacy policy — we encourage you to review it. We are not responsible for the privacy practices of advertisers or other third-party sites we link to.</p>
+      </article>
+
+      <article>
+        <h3>6. How we share information</h3>
+        <p>We do not sell your name or contact details to third parties for their own marketing use. We do share aggregated or device-level analytics and advertising data with service providers, analytics vendors, and advertising partners who help us operate our sites and measure campaign performance, and we may disclose information if required by law or to protect our rights.</p>
+      </article>
+
+      <article>
+        <h3>7. Your choices &amp; rights</h3>
+        <p>Depending on where you live, you may have the right to access, correct, delete, or restrict use of your personal information, and to opt out of certain data sales or targeted advertising (for example, under the CCPA/CPRA in California or the GDPR in the EU/UK). To exercise any of these rights, contact us at the address below. You can also opt out of email communications at any time using the unsubscribe link in any message we send.</p>
+      </article>
+
+      <article>
+        <h3>8. Children's privacy</h3>
+        <p>Our sites are not directed to children under 13, and we do not knowingly collect personal information from children. If you believe a child has provided us with information, contact us and we will remove it.</p>
+      </article>
+
+      <article>
+        <h3>9. Changes to this policy</h3>
+        <p>We may update this policy from time to time. The "last updated" date above reflects the most recent revision. Material changes will be reflected on this page.</p>
+      </article>
+
+      <article>
+        <h3>10. Contact us</h3>
+        <p>Questions about this policy can be sent to <a href="mailto:legal@texholloway.com">legal@texholloway.com</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- TERMS -->
+  <section id="terms" class="view legal">
+    <div class="wrap">
+      <div class="legal-head">
+        <h2>Terms &amp; Conditions</h2>
+      </div>
+      <p class="legal-updated">Last updated: <span class="updated-date"></span></p>
+
+      <article>
+        <h3>1. Acceptance of terms</h3>
+        <p>These terms govern your use of texholloway.com and any page published by Tex Holloway on a partner site that links here. By accessing or using these sites, you agree to be bound by these terms. If you do not agree, please do not use the site.</p>
+      </article>
+
+      <article>
+        <h3>2. Not financial, legal, or tax advice</h3>
+        <p>Content published by Tex Holloway — including articles hosted on partner sites — is provided for general informational and educational purposes only. It is not personalized investment, legal, tax, or professional advice, and should not be treated as a recommendation to buy, sell, or hold any security or financial product. Tex Holloway is not a registered investment adviser, broker-dealer, or financial planner. Always evaluate financial decisions against your own circumstances, and consult a licensed professional where appropriate.</p>
+      </article>
+
+      <article>
+        <h3>3. Advertising &amp; sponsored content</h3>
+        <p>Some content published or hosted by Tex Holloway is paid advertising, a sponsored feature, or an advertorial commissioned by a third-party advertiser, and is labeled accordingly. We may receive compensation — including a flat fee or a commission on resulting sales or leads — from the advertisers featured. Compensation does not guarantee a favorable review or outcome, but it may influence which offers are featured and how prominently.</p>
+      </article>
+
+      <article>
+        <h3>4. No guarantee of results</h3>
+        <p>Any performance figures, projections, or examples referenced in our content are illustrative or historical and are not a guarantee of future results. Investing involves risk, including the possible loss of principal, and past performance of any strategy, product, or publication does not predict future performance.</p>
+      </article>
+
+      <article>
+        <h3>5. Intellectual property</h3>
+        <p>Unless otherwise noted, the text, design, and layout of texholloway.com are owned by Tex Holloway and may not be reproduced, distributed, or republished without prior written permission. Advertiser logos, trademarks, and product names referenced on sponsored pages remain the property of their respective owners.</p>
+      </article>
+
+      <article>
+        <h3>6. Third-party links</h3>
+        <p>Our pages link to third-party websites and advertiser offers we do not control. We are not responsible for the content, accuracy, products, or practices of any linked site, and including a link does not imply our endorsement of everything on it.</p>
+      </article>
+
+      <article>
+        <h3>7. Disclaimer of warranties</h3>
+        <p>The site and its content are provided "as is" and "as available," without warranties of any kind, express or implied, including accuracy, completeness, or fitness for a particular purpose. We do not warrant that the site will be uninterrupted, error-free, or secure.</p>
+      </article>
+
+      <article>
+        <h3>8. Limitation of liability</h3>
+        <p>To the fullest extent permitted by law, Tex Holloway and its owners, contributors, and partners are not liable for any indirect, incidental, or consequential damages — including financial loss — arising from your use of the site or reliance on its content, including advertised or sponsored offers.</p>
+      </article>
+
+      <article>
+        <h3>9. Indemnification</h3>
+        <p>You agree to indemnify and hold Tex Holloway harmless from any claim or demand arising out of your misuse of the site or violation of these terms.</p>
+      </article>
+
+      <article>
+        <h3>10. Governing law</h3>
+        <p>These terms are governed by the laws of the jurisdiction in which Tex Holloway operates, without regard to conflict-of-law principles, unless otherwise required by local law.</p>
+      </article>
+
+      <article>
+        <h3>11. Changes to these terms</h3>
+        <p>We may revise these terms at any time. Continued use of the site after changes are posted constitutes acceptance of the revised terms. Check this page periodically for updates.</p>
+      </article>
+
+      <article>
+        <h3>12. Contact us</h3>
+        <p>Questions about these terms can be sent to <a href="mailto:legal@texholloway.com">legal@texholloway.com</a>.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span>© <span id="year"></span> Tex Holloway. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#home" data-view="home">Home</a>
+        <a href="#privacy" data-view="privacy">Privacy Policy</a>
+        <a href="#terms" data-view="terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <p class="footer-disc">Tex Holloway is a financial media publisher. Content on this site and on partner pages we produce is for informational purposes only and is not investment, legal, or tax advice. Some pages are paid advertising or sponsored content, labeled as such, for which Tex Holloway may be compensated.</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var views = document.querySelectorAll('.view');
+    var links = document.querySelectorAll('[data-view]');
+
+    function showView(name){
+      views.forEach(function(v){
+        v.classList.toggle('active', v.id === name);
+      });
+      links.forEach(function(l){
+        if(l.classList.contains('navlink')){
+          if(l.dataset.view === name){
+            l.setAttribute('aria-current','page');
+          } else {
+            l.removeAttribute('aria-current');
+          }
+        }
+      });
+      window.scrollTo(0,0);
+    }
+
+    function route(){
+      var hash = (window.location.hash || '#home').replace('#','');
+      if(['home','privacy','terms'].indexOf(hash) === -1) hash = 'home';
+      showView(hash);
+    }
+
+    window.addEventListener('hashchange', route);
+    route();
+
+    var d = new Date();
+    var opts = { year:'numeric', month:'long', day:'numeric' };
+    var dateStr = d.toLocaleDateString('en-US', opts);
+    document.getElementById('year').textContent = d.getFullYear();
+    document.querySelectorAll('.updated-date').forEach(function(el){
+      el.textContent = dateStr;
+    });
+  })();
+</script>
+
+</body>
+</html>
