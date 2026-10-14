@@ -94,7 +94,7 @@
                 <strong>Research has linked exposure to certain types of online content with changes in <span style="background: yellow;">behavior, anxiety, depression, body image and other mental-health concerns.</span></strong>
                 <br><br>
                 <img src="images/Final_Graphic.png" alt="Image"></p>
-                <p  style="font-style: italic; background: #e6e6e6; padding: 10px;text-align: center;">
+                <p class="showBtn"  style="font-style: italic; background: #e6e6e6; padding: 10px;text-align: center;">
                   <strong><em>Research from Common Sense Media, the American Psychological Association, and the U.S. Surgeon General has raised concerns about the content children are exposed to online and its potential impact on mental health.</em></strong>
                 </p>
                 <p>
@@ -807,3 +807,24 @@
     </div>
   </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var $section = $('.showBtn');
+    var $button = $('#iqn6lc');
+
+    $button.hide();
+
+    $(window).on('scroll resize', function () {
+        var sectionTop = $section.offset().top;
+        var scrollBottom = $(window).scrollTop() + $(window).height();
+
+        if (scrollBottom >= sectionTop) {
+            $button.fadeIn();
+        } else {
+            $button.fadeOut();
+        }
+    }).trigger('scroll');
+});
+</script>
