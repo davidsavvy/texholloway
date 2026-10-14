@@ -4390,8 +4390,26 @@ footer .fk-footer-col {
     }
 
     #iywwi {
-        font-size: 26px;
+        font-size: 33px;
         line-height: 28px;
+    }
+
+    .list-unstyled li{
+        font-size: 20px!important;
+    }
+
+    h2{
+        font-size: 33px!important;
+        font-weight: 600!important;
+        line-height: 35px!important;
+    }
+
+    .weekend-group{
+        padding: 30px!important;
+    }
+
+    .header_inner{
+        justify-content: center!important;
     }
 
     #inm85i {

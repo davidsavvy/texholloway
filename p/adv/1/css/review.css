@@ -18,7 +18,7 @@
 }
  
 .reviews__inner {
-  max-width: 1080px;
+  max-width: 100%;
   margin: 0 auto;
 }
  
@@ -32,7 +32,7 @@
  
 /* Masonry-style columns so uneven card heights pack neatly */
 .reviews__grid {
-  column-count: 3;
+  column-count: 1;
   column-gap: 20px;
 }
  
