@@ -829,10 +829,11 @@ footer .fk-footer-col {
 }
 
 #iqxge {
-    font-size: 40px;
+    font-size: 50px;
     font-family: 'Open Sans',sans-serif;
     margin-bottom: 12px;
     font-weight: 500;
+      padding-top: 30px;
 }
 
 #ie2zq {
