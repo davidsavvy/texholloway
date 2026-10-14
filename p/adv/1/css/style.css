@@ -4095,6 +4095,11 @@ footer .fk-footer-col {
     color: #a1a7b2 !important;
 }
 
+.getHangar{
+    font-size: 50px!important;
+    padding: 50px!important;
+}
+
 @media (max-width: 768px) {
     .main_btn a {
         padding:10px 20px !important;
@@ -4115,6 +4120,11 @@ footer .fk-footer-col {
     .fk-footer-row .fk-col {
         width: 100%;
     }
+
+    .getHangar{
+    font-size: 30px!important;
+    padding: 30px!important;
+}
 
     footer > div.fk-footer-row {
         flex-wrap: wrap;
