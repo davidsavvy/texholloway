@@ -1,0 +1,152 @@
+:root {
+  --paper: #f5f8fc;
+  --card: #ffffff;
+  --ink: #14213d;
+  --muted: #5b6b85;
+  --line: #dde5f0;
+  --sky: #2b6cb0;
+  --sky-soft: #e6f0fb;
+  --fields-soft: #dbfbdb;
+  --fields-ink: #1a4d1a;
+  --amber-soft: #fff1d6;
+  --amber-ink: #7a4b00;
+}
+
+.reviews {
+  padding: 56px 20px 150px;
+  background: #F5F8FC;
+}
+ 
+.reviews__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+ 
+.reviews__title {
+  margin: 0 0 28px;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+ 
+/* Masonry-style columns so uneven card heights pack neatly */
+.reviews__grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+ 
+.review {
+  break-inside: avoid;
+  margin: 0 0 20px;
+  padding: 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(20, 33, 61, 0.05);
+}
+ 
+.review__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+ 
+.review__avatar {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--sky-soft);
+}
+ 
+.review__who {
+  min-width: 0;
+}
+ 
+.review__name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+ 
+.review__badge {
+  display: inline-block;
+  margin-top: 3px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--sky-soft);
+  color: var(--sky);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+ 
+.review__badge--question {
+  background: var(--amber-soft);
+  color: var(--amber-ink);
+}
+ 
+.review__text {
+  margin: 0;
+  font-size: 0.97rem;
+}
+ 
+.review__text strong {
+  font-weight: 700;
+}
+ 
+/* Reply nested under a question */
+.review__reply {
+  margin-top: 16px;
+  padding: 14px 0 0 16px;
+  border-top: 1px solid var(--line);
+  border-left: 3px solid var(--sky-soft);
+}
+ 
+.review__head--small .review__avatar {
+  width: 36px;
+  height: 36px;
+}
+ 
+.review__head--small .review__name {
+  font-size: 0.92rem;
+}
+ 
+@media (max-width: 900px) {
+  .reviews__grid { column-count: 2; }
+}
+ 
+@media (max-width: 600px) {
+  .reviews { padding: 40px 14px; }
+  .reviews__grid { column-count: 1; }
+}
+ 
+ 
+/* Stats row: replace each 00 with the real number */
+.review__stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+.stat svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
